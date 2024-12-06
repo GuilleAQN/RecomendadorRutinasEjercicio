@@ -4,7 +4,7 @@ Proyecto de IA que consta de la creación de un modelo de Redes Neuronales para 
 
 ## Responsabilidades
 
-- [ ] **Clase del Modelo:** Miguel y Daniel de la Rosa.
+- [X] **Clase del Modelo:** Miguel y Daniel de la Rosa.
 - [X] **Clase de la Predicción:** Jose Alberto y Luis Perez. (Pendiente de mejora)
 - [ ] **Clase de la Evaluación del Modelo:** Adonis Zheng y Michael Santana
 
