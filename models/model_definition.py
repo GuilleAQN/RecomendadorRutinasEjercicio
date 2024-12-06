@@ -1,7 +1,8 @@
+import os
 import tensorflow as tf
 
 
-class ModeloRecomendacionEjercicios:
+class ModeloRecomendacion:
     def __init__(self):
         self.model = self._build_model()
 
@@ -25,5 +26,25 @@ class ModeloRecomendacionEjercicios:
         model.compile(optimizer="adam", loss="mse", metrics=["mae"])
         return model
 
-    def load_model(self, filepath):
+    def load_model(self, filepath: str = "models/trained"):
+        """
+        Carga un modelo previamente guardado desde el archivo especificado.
+        """
         self.model = tf.keras.models.load_model(filepath)
+
+    def save_model(self, filepath: str = "models/trained"):
+        """
+        Guarda el modelo en el archivo especificado.
+        """
+        os.makedirs(os.path.dirname(filepath), exist_ok=True)
+        self.model.save(filepath)
+
+    def train(self, data, labels, epochs=10, batch_size=32, validation_split=0.2):
+        """
+        Entrena el modelo con los datos proporcionados.
+        """
+        self.model.fit(
+            data, labels, epochs=epochs, batch_size=batch_size, validation_split=validation_split, verbose=1
+        )
+        self.save_model()
+
